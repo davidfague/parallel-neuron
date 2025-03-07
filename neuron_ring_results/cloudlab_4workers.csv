@@ -1,0 +1,2 @@
+Time,Total cells,avg_num_cells_per_worker,Location,parallel workers
+0.9959197044372559,1000,250.0,cloudlab,4

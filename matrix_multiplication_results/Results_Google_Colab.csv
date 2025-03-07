@@ -1,0 +1,9 @@
+NxN,Time,Parallelization,Location,mpi_size
+10,0.0023620128631591797,False,Google Colab,1
+100,2.883405923843384,False,Google Colab,1
+500,141.06255507469177,False,Google Colab,1
+1000,1086.8327088356018,False,Google Colab,1
+10,0.001168966293334961,True,Google Colab,1
+100,0.9664731025695801,True,Google Colab,1
+500,136.74091029167175,True,Google Colab,1
+1000,1099.28471326828,True,Google Colab,1
