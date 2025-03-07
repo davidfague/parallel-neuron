@@ -8,7 +8,7 @@ import pandas as pd
 start_time = time.time()
 
 # Create a distributed network (each MPI process handles its own set of cells)
-ring = Ring(N=100)
+ring = Ring(N=1000)
 
 # Initialize the ParallelContext for MPI communication
 pc = h.ParallelContext()
@@ -45,7 +45,7 @@ if pc.id() == 0: # Only rank 0 combines the data and performs plotting
     for i, spike_times in data.items():
         plt.vlines(spike_times, i + 0.5, i + 1.5)
     plt.show()
-    plt.savefig(f'neuron_ring_results/{len(pc.nhost())}_workers.png')
+    plt.savefig(f'neuron_ring_results/{pc.nhost()}_workers.png')
 
     total_cells = sum(cell_counts)
     average_cells = total_cells / pc.nhost()
@@ -64,7 +64,8 @@ if pc.id() == 0: # Only rank 0 combines the data and performs plotting
 
     df = pd.DataFrame({
         'Time': [elapsed_time],
-        'avg_num_cells': [average_cells],
+        'Total cells': [total_cells],
+        'avg_num_cells_per_worker': [average_cells],
         'Location': [location],
         'parallel workers': [pc.nhost()]
     })
