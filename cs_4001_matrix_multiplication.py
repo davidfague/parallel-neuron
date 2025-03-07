@@ -70,6 +70,7 @@ if __name__ == "__main__":
                 locations.append(location)
                 mpi_sizes.append(size)
                 print(f"Execution time: {end_time - start_time} seconds for N = {N}")
+                sys.stdout.flush()
     
     # Only master writes the CSV file
     if rank == 0:
@@ -82,3 +83,4 @@ if __name__ == "__main__":
         })
         df.to_csv(f"Results_{location}.csv", index=False)
         print(f"Results written to Results_{location}.csv")
+        sys.stdout.flush()
