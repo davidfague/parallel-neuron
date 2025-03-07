@@ -4,3 +4,5 @@ sudo apt install libopenmpi-dev
 pip3 install mpi4py
 pip3 install numpy
 pip3 install pandas
+pip3 install neuron
+pip3 install matplotlib
