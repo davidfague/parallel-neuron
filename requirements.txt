@@ -1,0 +1,6 @@
+sudo apt update
+sudo apt install python3-pip
+sudo apt install libopenmpi-dev
+pip3 install mpi4py
+pip3 install numpy
+pip3 install pandas
