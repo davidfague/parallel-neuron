@@ -1,0 +1,5 @@
+NxN,Time,Parallelization,Location,mpi_size
+10,0.0009379386901855469,True,cloudlab,1
+100,0.8476393222808838,True,cloudlab,1
+500,108.33501148223877,True,cloudlab,1
+1000,854.4768753051758,True,cloudlab,1
