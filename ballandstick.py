@@ -1,3 +1,12 @@
+class Cell:
+    def __init__(self, gid):
+        self._gid = gid
+        self._setup_morphology()
+        self.all = self.soma.wholetree()
+        self._setup_biophysics()
+    def __repr__(self):
+        return '{}[{}]'.format(self.name, self._gid)
+
 class BallAndStick(Cell):
     name = 'BallAndStick'
     
