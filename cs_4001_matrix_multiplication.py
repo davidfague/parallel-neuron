@@ -17,8 +17,8 @@ if __name__ == "__main__":
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
     size = comm.Get_size()
-    parallel_options = ast.literal_eval(sys.argv[2])
-    location = sys.argv[1]
+    parallel_options = ast.literal_eval(sys.argv[-1])
+    location = sys.argv[-2]
     Ns = [10, 100, 500, 1000]
     
     # Only master will collect results for output.
