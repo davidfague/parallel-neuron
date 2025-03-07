@@ -29,6 +29,7 @@ if __name__ == "__main__":
     times = []
     parallels = []
     locations = []
+    mpi_sizes = []
     for parallel in parallel_options:
         for N in Ns:
             start_time = time.time()
@@ -78,8 +79,9 @@ if __name__ == "__main__":
             times.append(end_time - start_time)
             parallels.append(parallel)
             locations.append(location)
+            mpi_sizes.append(size)
             print(f"Execution time: {end_time - start_time} seconds for N = {N}")
   
     # dataframe of results
-    df = pd.DataFrame({'NxN': Ns*len(parallel_options), 'Time': times, 'Parallelization':parallels, 'Location':locations})
+    df = pd.DataFrame({'NxN': Ns*len(parallel_options), 'Time': times, 'Parallelization':parallels, 'Location':locations, 'mpi_size':mpi_sizes})    
     df.to_csv(f"Results_{location}.csv", index=False)
