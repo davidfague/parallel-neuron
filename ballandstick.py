@@ -1,18 +1,29 @@
+from neuron import h, gui
+from neuron.units import ms, mV
+
 class Cell:
     def __init__(self, gid, x, y, z, theta):
         self._gid = gid
         self._setup_morphology()
         self.all = self.soma.wholetree()
         self._setup_biophysics()
-        self.x = self.y = self.z = 0                     # <-- NEW
+        self.x = self.y = self.z = 0
         h.define_shape()
-        self._rotate_z(theta)                            # <-- NEW        
-        self._set_position(x, y, z)                      # <-- NEW
+        self._rotate_z(theta)
+        self._set_position(x, y, z)
+        
+        # everything below here in this method is NEW
+        self._spike_detector = h.NetCon(self.soma(0.5)._ref_v, None, sec=self.soma)
+        self.spike_times = h.Vector()
+        self._spike_detector.record(self.spike_times)
+        
+        self._ncs = []
+        
+        self.soma_v = h.Vector().record(self.soma(0.5)._ref_v)
+
         
     def __repr__(self):
         return '{}[{}]'.format(self.name, self._gid)
-    
-    # everything below here is NEW
     
     def _set_position(self, x, y, z):
         for sec in self.all:
@@ -23,6 +34,7 @@ class Cell:
                                z - self.z + sec.z3d(i),
                               sec.diam3d(i))
         self.x, self.y, self.z = x, y, z
+        
     def _rotate_z(self, theta):
         """Rotate the cell about the Z axis."""
         for sec in self.all:
