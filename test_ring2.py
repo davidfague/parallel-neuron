@@ -45,7 +45,7 @@ if pc.id() == 0: # Only rank 0 combines the data and performs plotting
     for i, spike_times in data.items():
         plt.vlines(spike_times, i + 0.5, i + 1.5)
     plt.show()
-    plt.savefig(f'neuron_ring_results/{len(ring.cells)}_cells.png')
+    plt.savefig(f'neuron_ring_results/{len(pc.nhost())}_workers.png')
 
     total_cells = sum(cell_counts)
     average_cells = total_cells / pc.nhost()
