@@ -32,6 +32,7 @@ if __name__ == "__main__":
             start_time = time.time()
             if parallel:
                 if rank == 0:
+                    print(f"size: {size}")
                     # Master process: generate matrices and send parts to workers
                     A = np.random.rand(N, N)
                     B = np.random.rand(N, N)
